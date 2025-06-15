@@ -1,0 +1,152 @@
+# Mandatory
+server:
+  port: 5001 
+
+# Mandatory.
+cache:
+  host: "localhost"
+  port: 6380
+  ttl: "PT10M"
+  # Optional. Default is 0.
+  db: 0 
+
+# Optional.
+responseCache:
+  mongoURL: "mongodb://tvast:password@localhost:27018/protocol_server-v2?authSource=admin"
+  ttl: "PT10M"
+
+# Mandatory.
+# Priority order will be
+# 1. Synchronous
+# 2. webhook
+# 3. pubSub
+client:
+#   synchronous: 
+#     mongoURL: "mongodb://tvast:password@0.0.0.0:27018/ps?authSource=admin"
+
+  webhook:
+   url: "WEBHOOK_URL"
+  
+  #messageQueue: 
+  #  amqpURL: "amqp://guest:guest@localhost:5672"
+  #  incomingQueue: "protocol-server-incoming"
+  #  outgoingQueue: "protocol-server-outgoing"
+
+# Mandatory.
+app:
+  # Mandatory.
+  mode: bpp
+
+  # Two types of gateway mode present.
+  # client and network.
+  gateway:
+    mode: client
+    inboxQueue: "inbox-bpp"
+    outboxQueue: "outbox-bpp"
+    amqpURL: "amqp://tvast:password@localhost:5673"
+
+  # Mandatory.
+  actions:
+    requests:
+      search:
+        ttl : "PT15S"
+      init:
+        ttl : "PT10S"
+      select:
+        ttl : "PT10S"
+      confirm:
+        ttl : "PT10S"
+      status:
+        ttl : "PT10S"
+      track:
+        ttl : "PT10S"
+      cancel:
+        ttl : "PT10S"
+      update:
+        ttl : "PT10S"
+      rating:
+        ttl : "PT10S"
+      support:
+        ttl : "PT10S"
+      get_cancellation_reasons:
+        ttl: "PT10S"
+      get_rating_categories:
+        ttl: "PT10S"          
+    
+    responses: 
+      on_search:
+        ttl: "PT15S"
+      on_init:
+        ttl: "PT10S"
+      on_select:
+        ttl: "PT10S"
+      on_confirm:
+        ttl: "PT10S"
+      on_status:
+        ttl: "PT10S"
+      on_track:
+        ttl: "PT10S"
+      on_cancel:
+        ttl: "PT10S"
+      on_update:
+        ttl: "PT10S"
+      on_rating:
+        ttl: "PT10S"
+      on_support:
+        ttl: "PT10S"
+      cancellation_reasons:
+        ttl: "PT10S"
+      rating_categories:
+        ttl: "PT10S"          
+  
+  # Mandatory.
+  privateKey: "jEwoZaf1Uxd7jm5vJeBLvDv3CtrnPxER3bkBfrzYsYrVacbOHM+L3LiLWmoX0r8v9lVANOoxXyCGAhNOo9Bvpw=="
+  publicKey: "1WnGzhzPi9y4i1pqF9K/L/ZVQDTqMV8ghgITTqPQb6c="
+
+  # Mandatory.
+  subscriberId: "BPP_SUBSCRIBER_ID"
+  subscriberUri: "BPP_SUBSCRIBER_URL"
+
+  # Mandatory.
+  registryUrl: REGISTRY_URL
+  auth: true
+  uniqueKey: "BPP_SUBSCRIBER_ID_KEY"
+  
+  # Mandatory.
+  city: "std:080"
+  country: "IND"
+
+  # Mandatory.
+  ttl: "PT10M"
+
+  # Mandatory.
+  httpTimeout: "PT3S"
+  httpRetryCount: 2
+  telemetry:
+    network:
+      url: "https://data.onest.network/data/v1/in/onest-telemetry-testing"
+    # raw events are optional
+    raw:
+      url: ""  
+    batchSize: 100
+    # In minutes
+    syncInterval: 5
+    # Either can be LOCAL or REDIS
+    storageType: "LOCAL"
+    backupFilePath: "backups"
+    redis:
+      db: 4
+    messageProperties: []
+  service: 
+    name: "network_service"
+    version: "1.0.0"
+  
+  useHMACForWebhook: false
+  sharedKeyForWebhookHMAC: ""
+
+  useLayer2Config: false
+  mandateLayer2Config: false
+
+  openAPIValidator:
+    cachedFileLimit: 5
+    initialFilesToCache: ""
