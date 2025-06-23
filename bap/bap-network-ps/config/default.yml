@@ -21,11 +21,11 @@ responseCache:
 # 2. webhook
 # 3. pubSub
 client:
-  # synchronous: 
-  #   mongoURL: "mongodb://tvast:password@localhost:27017/protocol_server-v2?authSource=admin"
+  synchronous: 
+    mongoURL: "mongodb://tvast:password@localhost:27017/protocol_server-v2?authSource=admin"
 
-  webhook:
-   url: "http://localhost:3000/client_callback"
+  # webhook:
+  #  url: "http://localhost:3000/client_callback"
   
   #messageQueue: 
   #  amqpURL: "amqp://guest:guest@localhost:5672"
@@ -107,7 +107,7 @@ app:
 
   # Mandatory.
   subscriberId: "test-id"
-  subscriberUri: "https://fe74-2409-40e3-104c-167d-94d8-6c50-e5d-2264.ngrok-free.app"
+  subscriberUri: "https://862f-2401-4900-855d-1671-29b6-bc5a-4041-62ea.ngrok-free.app"
 
   # Mandatory.
   registryUrl: https://registry.becknprotocol.io/subscribers
@@ -126,7 +126,7 @@ app:
   httpRetryCount: 2
   telemetry:
     network:
-      url: "https://data.onest.network/data/v1/in/onest-telemetry-testing"
+      url: ""
     # raw events are optional
     raw:
       url: ""  

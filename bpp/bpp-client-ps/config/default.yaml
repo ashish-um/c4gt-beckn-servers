@@ -25,7 +25,7 @@ client:
 #     mongoURL: "mongodb://tvast:password@0.0.0.0:27018/ps?authSource=admin"
 
   webhook:
-   url: "WEBHOOK_URL"
+   url: "http://localhost:8080"
   
   #messageQueue: 
   #  amqpURL: "amqp://guest:guest@localhost:5672"
@@ -104,13 +104,13 @@ app:
   publicKey: "1WnGzhzPi9y4i1pqF9K/L/ZVQDTqMV8ghgITTqPQb6c="
 
   # Mandatory.
-  subscriberId: "BPP_SUBSCRIBER_ID"
-  subscriberUri: "BPP_SUBSCRIBER_URL"
+  subscriberId: "bpp-ashish"
+  subscriberUri: "https://0875-2401-4900-855d-1671-29b6-bc5a-4041-62ea.ngrok-free.app"
 
   # Mandatory.
-  registryUrl: REGISTRY_URL
-  auth: true
-  uniqueKey: "BPP_SUBSCRIBER_ID_KEY"
+  registryUrl: https://registry.becknprotocol.io/subscribers
+  auth: false
+  uniqueKey: "bpp-ashish-key"
   
   # Mandatory.
   city: "std:080"
@@ -124,7 +124,7 @@ app:
   httpRetryCount: 2
   telemetry:
     network:
-      url: "https://data.onest.network/data/v1/in/onest-telemetry-testing"
+      url: ""
     # raw events are optional
     raw:
       url: ""  
