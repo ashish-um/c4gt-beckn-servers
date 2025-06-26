@@ -12,9 +12,6 @@ agent:
     authtoken: xxx
 tunnels:
   first:
-    addr: 6002
-    proto: http
-  second:
     addr: 6001
     proto: http
 ```
